@@ -1,0 +1,33 @@
+@use "../util" as *;
+
+.main-header {
+  background: url(../images/bg-mobile-light.jpg) no-repeat center;
+  background-size: cover;
+  padding-top: rem(40);
+  padding-bottom: rem(130);
+
+  &-content {
+    .brand {
+      display: block;
+      font-size: 2.1em;
+      font-weight: bold;
+      text-decoration: none;
+      line-height: 1.1rem;
+      overflow: hidden;
+      color: var(--clr-light-gray);
+
+      > span {
+        vertical-align: sub;
+        margin-right: rem(-10);
+        letter-spacing: rem(10);
+        text-transform: uppercase;
+      }
+    }
+
+    .dark-theme {
+      > img {
+        vertical-align: middle;
+      }
+    }
+  }
+}

@@ -4,14 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link rel="stylesheet" href="dist/style.css" />
+    <script defer src="./dist/script.js"></script>
     <title>Frontend Mentor | Todo app</title>
   </head>
   <body>
     <header class="main-header">
-      <a href="#" class="brand">Todo</a>
-      <figure class="dark-theme">
-        <img width="40" height="40" src="./images/icon-moon.svg" alt="Dark Mode" loading="lazy" />
-      </figure>
+      <div class="wrapper">
+        <div class="main-header-content flex flex-jc-sb flex-ai-c">
+          <a href="#" class="brand">
+            <span>Todo</span>
+          </a>
+          <figure class="dark-theme">
+            <img width="22" height="22" src="./images/icon-moon.svg" alt="Dark Mode" loading="lazy" />
+          </figure>
+        </div>
+      </div>
     </header>
     <main class="todo">
       <section class="todo-newTask">
@@ -29,6 +37,26 @@
             <div class="todo-task-description">
               <input type="checkbox" />
               <p>Task #1</p>
+            </div>
+            <figure class="todo-task-delete">
+              <img src="./images/icon-cross.svg" alt="Delete Task" />
+            </figure>
+          </div>
+          <div class="todo-task">
+            <!-- Generar id con JS -->
+            <div class="todo-task-description">
+              <input type="checkbox" />
+              <p>Task #2</p>
+            </div>
+            <figure class="todo-task-delete">
+              <img src="./images/icon-cross.svg" alt="Delete Task" />
+            </figure>
+          </div>
+          <div class="todo-task">
+            <!-- Generar id con JS -->
+            <div class="todo-task-description">
+              <input type="checkbox" />
+              <p>Task #3</p>
             </div>
             <figure class="todo-task-delete">
               <img src="./images/icon-cross.svg" alt="Delete Task" />

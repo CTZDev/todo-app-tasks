@@ -1,0 +1,17 @@
+@use "./colors" as *;
+
+:root {
+  @each $prop, $value in $colors-primary {
+    --#{$prop}: #{$value};
+  }
+  @each $prop, $value in $colors-light {
+    --#{$prop}: #{$value};
+  }
+  @each $prop, $value in $colors-dark {
+    --#{$prop}: #{$value};
+  }
+  --font-family: "Josefin Sans", sans-serif;
+  --fz-sm: 14px;
+  --fz-md: 16px;
+  --fz-lg: 18px;
+}
