@@ -1,0 +1,19 @@
+@use "../util" as *;
+
+.todo-task {
+  border-bottom: 1px solid var(--clr-light-grayishblue-lb);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(14) rem(16);
+  color: var(--clr-dark-grayishblue-lb);
+
+  &-description {
+    display: inherit;
+    align-items: flex-end;
+
+    > p {
+      margin-left: rem(12);
+    }
+  }
+}

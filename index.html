@@ -22,57 +22,57 @@
       </div>
     </header>
     <main class="todo">
-      <section class="todo-newTask">
-        <form action="#" class="todo-container" id="formTodo">
-          <div class="todo-newTask-add">
-            <button type="submit" name="btnnewTodo"></button>
-            <input type="text" name="txtnewTodo" placeholder="Create a new todo..." />
-          </div>
-        </form>
-      </section>
-      <section class="todo-tasks">
-        <div class="todo-tasks-container">
-          <div class="todo-task">
-            <!-- Generar id con JS -->
-            <div class="todo-task-description">
-              <input type="checkbox" />
-              <p>Task #1</p>
+      <div class="wrapper">
+        <section class="todo-newTask">
+          <form action="#" id="formTodo">
+            <div class="todo-newTask-add flex flex-ai-c">
+              <button type="submit" name="btnnewTodo" class="btn"></button>
+              <input type="text" name="txtnewTodo" placeholder="Create a new todo..." />
             </div>
-            <figure class="todo-task-delete">
-              <img src="./images/icon-cross.svg" alt="Delete Task" />
-            </figure>
-          </div>
-          <div class="todo-task">
-            <!-- Generar id con JS -->
-            <div class="todo-task-description">
-              <input type="checkbox" />
-              <p>Task #2</p>
+          </form>
+        </section>
+        <section class="todo-tasks">
+          <div class="todo-tasks-container">
+            <div class="todo-task">
+              <div class="todo-task-description">
+                <input type="checkbox" class="btn" />
+                <p>Task #1</p>
+              </div>
+              <figure class="todo-task-delete">
+                <img width="14" height="14" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
+              </figure>
             </div>
-            <figure class="todo-task-delete">
-              <img src="./images/icon-cross.svg" alt="Delete Task" />
-            </figure>
-          </div>
-          <div class="todo-task">
-            <!-- Generar id con JS -->
-            <div class="todo-task-description">
-              <input type="checkbox" />
-              <p>Task #3</p>
+            <div class="todo-task">
+              <div class="todo-task-description">
+                <input type="checkbox" class="btn" />
+                <p>Task #2</p>
+              </div>
+              <figure class="todo-task-delete">
+                <img width="14" height="14" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
+              </figure>
             </div>
-            <figure class="todo-task-delete">
-              <img src="./images/icon-cross.svg" alt="Delete Task" />
-            </figure>
+            <div class="todo-task">
+              <!-- Generar id con JS -->
+              <div class="todo-task-description">
+                <input type="checkbox" class="btn" />
+                <p>Task #3</p>
+              </div>
+              <figure class="todo-task-delete">
+                <img width="14" height="14" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
+              </figure>
+            </div>
           </div>
-        </div>
-        <div class="todo-tasks-tags">
-          <p class="todo-task-tag">5items left</p>
-          <p class="todo-task-tag">Clear Completed</p>
-        </div>
-      </section>
-      <section class="todo-details">
-        <button type="button">All</button>
-        <button type="button">Active</button>
-        <button type="button">Completed</button>
-      </section>
+          <div class="todo-tasks-tags flex flex-jc-sb flex-ai-c">
+            <p class="todo-task-tag">5 items left</p>
+            <p class="todo-task-tag">Clear Completed</p>
+          </div>
+        </section>
+        <section class="todo-details flex flex-jc-c flex-ai-c">
+          <button type="button" class="todo-details-btn">All</button>
+          <button type="button" class="todo-details-btn">Active</button>
+          <button type="button" class="todo-details-btn">Completed</button>
+        </section>
+      </div>
     </main>
     <footer class="footer">
       <p class="footer-drag-drop">Drag and drop to reorder list</p>

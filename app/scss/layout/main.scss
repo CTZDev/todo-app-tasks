@@ -1,0 +1,66 @@
+@use "../util" as *;
+
+main {
+  position: relative;
+}
+
+.todo {
+  margin-bottom: rem(42);
+  margin-top: rem(-92);
+
+  &-newTask {
+    border-radius: 6px;
+    padding: rem(8) rem(16);
+    margin-bottom: rem(16);
+    background-color: var(--clr-light-gray);
+
+    &-add {
+      input[type="text"] {
+        font-family: var(--font-family);
+        padding: rem(10);
+        font-size: var(--fz-sm);
+        flex: 1 1 auto;
+        margin-left: rem(2);
+        border: none;
+        outline: none;
+        color: var(--clr-dark-grayishblue-lb);
+      }
+    }
+  }
+
+  &-tasks {
+    background-color: var(--clr-light-gray);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: rem(16);
+    color: var(--clr-dark-grayishblue-la);
+    box-shadow: 0px 2px 18px -6px var(--clr-dark-grayishblue-la);
+
+    &-tags {
+      padding: rem(14) rem(16);
+    }
+  }
+
+  &-details {
+    border-radius: 6px;
+    padding: rem(16);
+    gap: rem(16);
+    background-color: var(--clr-light-gray);
+    box-shadow: 0px 2px 18px -6px var(--clr-dark-grayishblue-la);
+
+    &-btn {
+      font-family: var(--font-family);
+      font-size: var(--fz-sm);
+      font-weight: bold;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: var(--clr-dark-grayishblue-la);
+      transition: color 250ms ease-in;
+
+      &:focus {
+        color: var(--clr-brightblue);
+      }
+    }
+  }
+}

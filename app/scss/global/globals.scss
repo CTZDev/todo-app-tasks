@@ -61,6 +61,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/*img*/
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
 /*Flex*/
 .flex {
   display: flex;
