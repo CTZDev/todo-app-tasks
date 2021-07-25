@@ -22,13 +22,10 @@ body {
   min-height: 100vh;
   font-size: var(--fz-sm);
   text-rendering: optimizeSpeed;
+  background: linear-gradient(to bottom, transparent, var(--clr-light-gray));
 
   @include mq(small) {
     font-size: var(--fz-md);
-  }
-
-  @include mq(medium) {
-    font-size: var(--fz-lg);
   }
 }
 
@@ -96,15 +93,13 @@ picture {
 .wrapper {
   padding-left: rem(24);
   padding-right: rem(24);
+  max-width: rem(636);
+  margin-left: auto;
+  margin-right: auto;
 
   @include mq(small) {
     padding-left: rem(48);
     padding-right: rem(48);
-  }
-
-  @include mq(medium) {
-    padding-left: rem(64);
-    padding-right: rem(64);
   }
 }
 

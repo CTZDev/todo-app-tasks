@@ -6,13 +6,19 @@
   padding-top: rem(40);
   padding-bottom: rem(130);
 
+  @include mq(small) {
+    background: url(../images/bg-desktop-light.jpg) no-repeat center;
+    padding-top: rem(72);
+    padding-bottom: rem(192);
+  }
+
   &-content {
     .brand {
       display: block;
       font-size: 2.1em;
       font-weight: bold;
       text-decoration: none;
-      line-height: 1.1rem;
+      line-height: 1.15rem;
       overflow: hidden;
       color: var(--clr-light-gray);
 

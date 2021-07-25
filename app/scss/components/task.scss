@@ -8,6 +8,10 @@
   padding: rem(14) rem(16);
   color: var(--clr-dark-grayishblue-lb);
 
+  @include mq(small) {
+    padding: rem(19.5) rem(24);
+  }
+
   &-description {
     display: inherit;
     align-items: flex-end;
