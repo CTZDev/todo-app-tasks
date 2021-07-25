@@ -7,6 +7,14 @@
   align-items: center;
   padding: rem(14) rem(16);
   color: var(--clr-dark-grayishblue-lb);
+  cursor: pointer;
+
+  &.is-active {
+    & .todo-task-delete {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 
   @include mq(small) {
     padding: rem(19.5) rem(24);
@@ -14,10 +22,20 @@
 
   &-description {
     display: inherit;
-    align-items: flex-end;
+    align-items: center;
+    flex-basis: 95%;
 
     > p {
       margin-left: rem(12);
+      margin-right: rem(24);
+      word-break: break-word;
     }
+  }
+
+  &-delete {
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 250ms ease-in, visibility 250ms ease-in;
   }
 }

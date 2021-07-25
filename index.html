@@ -26,20 +26,20 @@
         <section class="todo-newTask">
           <form action="#" id="formTodo">
             <div class="todo-newTask-add flex flex-ai-c">
-              <button type="submit" name="btnnewTodo" class="btn"></button>
-              <input type="text" name="txtnewTodo" placeholder="Create a new todo..." />
+              <input type="submit" name="btnnewTask" class="btn" value="" />
+              <input type="text" name="txtnewTask" placeholder="Create a new todo..." />
             </div>
           </form>
         </section>
         <section class="todo-tasks">
           <div class="todo-tasks-container">
-            <div class="todo-task">
+            <div class="todo-task is-active">
               <div class="todo-task-description">
-                <input type="checkbox" class="btn" />
+                <input type="checkbox" class="btn is-active" />
                 <p>Task #1</p>
               </div>
               <figure class="todo-task-delete">
-                <img width="14" height="14" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
+                <img width="16" height="16" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
               </figure>
             </div>
             <div class="todo-task">
@@ -48,7 +48,7 @@
                 <p>Task #2</p>
               </div>
               <figure class="todo-task-delete">
-                <img width="14" height="14" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
+                <img width="16" height="16" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
               </figure>
             </div>
             <div class="todo-task">
@@ -58,17 +58,17 @@
                 <p>Task #3</p>
               </div>
               <figure class="todo-task-delete">
-                <img width="14" height="14" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
+                <img width="16" height="16" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
               </figure>
             </div>
           </div>
           <div class="todo-tasks-tags flex flex-jc-sb flex-ai-c">
-            <p class="todo-task-tag">5 items left</p>
-            <p class="todo-task-tag">Clear Completed</p>
+            <p>5 items left</p>
+            <button type="button" class="todo-tasks-tag">Clear Completed</button>
           </div>
         </section>
         <section class="todo-details flex flex-jc-c flex-ai-c">
-          <button type="button" class="todo-details-btn">All</button>
+          <button type="button" class="todo-details-btn active">All</button>
           <button type="button" class="todo-details-btn">Active</button>
           <button type="button" class="todo-details-btn">Completed</button>
         </section>

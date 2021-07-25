@@ -7,3 +7,28 @@
     @content;
   }
 }
+
+@mixin activeState {
+  font-family: var(--font-family);
+  font-size: var(--fz-sm);
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--clr-dark-grayishblue-la);
+  transition: color 250ms ease-in;
+  cursor: pointer;
+
+  @include mq(small) {
+    font-size: var(--fz-md);
+  }
+
+  &:hover {
+    color: var(--clr-dark-grayishblue-lb);
+  }
+
+  &:focus,
+  &.active {
+    color: var(--clr-brightblue);
+  }
+}

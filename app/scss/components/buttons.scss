@@ -1,10 +1,25 @@
+@use "../util" as *;
+
 .btn {
-  border-radius: 50%;
   width: 24px;
   height: 24px;
-  border: 1px solid var(--clr-dark-grayishblue-la);
-  background-color: transparent;
   outline: none;
-  cursor: pointer;
+  border: none;
   appearance: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: rem(1);
+  background: var(--clr-dark-grayishblue-la);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: destination-out;
+
+  &:hover {
+    padding: rem(2);
+    background: var(--clr-chekbg);
+  }
+
+  &.is-active {
+    padding: 12px;
+    background: url(../images/icon-check.svg) no-repeat center, var(--clr-chekbg);
+  }
 }

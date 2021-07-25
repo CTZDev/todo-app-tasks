@@ -8,6 +8,7 @@
 
   @include mq(small) {
     background: url(../images/bg-desktop-light.jpg) no-repeat center;
+    background-size: cover;
     padding-top: rem(72);
     padding-bottom: rem(192);
   }

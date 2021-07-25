@@ -37,6 +37,7 @@ main {
         border: none;
         outline: none;
         color: var(--clr-dark-grayishblue-lb);
+        caret-color: var(--clr-brightblue);
         background-color: transparent;
 
         @include mq(small) {
@@ -57,6 +58,10 @@ main {
     &-tags {
       padding: rem(16) rem(16);
     }
+
+    &-tag {
+      @include activeState;
+    }
   }
 
   &-details {
@@ -76,22 +81,7 @@ main {
     }
 
     &-btn {
-      font-family: var(--font-family);
-      font-size: var(--fz-sm);
-      font-weight: bold;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      color: var(--clr-dark-grayishblue-la);
-      transition: color 250ms ease-in;
-
-      @include mq(small) {
-        font-size: var(--fz-md);
-      }
-
-      &:focus {
-        color: var(--clr-brightblue);
-      }
+      @include activeState;
     }
   }
 }
