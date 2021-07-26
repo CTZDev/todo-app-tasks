@@ -17,9 +17,4 @@
     padding: rem(2);
     background: var(--clr-chekbg);
   }
-
-  &.is-active {
-    padding: 12px;
-    background: url(../images/icon-check.svg) no-repeat center, var(--clr-chekbg);
-  }
 }

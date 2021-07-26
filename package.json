@@ -1,22 +1,36 @@
 {
-  "name": "project-todo-app",
+  "name": "todo-app",
   "version": "1.0.0",
   "description": "![Design preview for the Todo app coding challenge](./design/desktop-preview.jpg)",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CTZDev/todo-app-tasks.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CTZDev/todo-app-tasks/issues"
+  },
+  "homepage": "https://github.com/CTZDev/todo-app-tasks#readme",
   "devDependencies": {
     "@babel/core": "^7.14.8",
+    "@babel/plugin-transform-modules-commonjs": "^7.14.5",
     "@babel/preset-env": "^7.14.8",
     "browser-sync": "^2.27.4",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-babel": "^8.0.0",
+    "gulp-better-rollup": "^4.0.1",
     "gulp-sass": "^5.0.0",
     "gulp-terser": "^2.0.1",
+    "rollup": "^2.54.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "sass": "^1.36.0"
   }
 }

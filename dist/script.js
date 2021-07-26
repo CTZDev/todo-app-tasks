@@ -1,2 +1,2 @@
-"use strict";
+!function(n){"function"==typeof define&&define.amd?define("script",n):n()}((function(){"use strict";document.addEventListener("DOMContentLoaded",(function(n){console.log("sdfs")}))}));
 //# sourceMappingURL=script.js.map

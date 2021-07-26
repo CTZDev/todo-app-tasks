@@ -1,5 +1,7 @@
 @use "../util" as *;
 
+//Song data
+
 .todo-task {
   border-bottom: 1px solid var(--clr-light-grayishblue-lb);
   display: flex;
@@ -7,12 +9,22 @@
   align-items: center;
   padding: rem(14) rem(16);
   color: var(--clr-dark-grayishblue-lb);
-  cursor: pointer;
+  cursor: move;
 
   &.is-active {
     & .todo-task-delete {
       opacity: 1;
       visibility: visible;
+    }
+
+    p {
+      text-decoration: line-through;
+      color: var(--clr-dark-grayishblue-la);
+    }
+
+    .btn {
+      padding: 12px;
+      background: url(../images/icon-check.svg) no-repeat center, var(--clr-chekbg);
     }
   }
 
@@ -29,6 +41,7 @@
       margin-left: rem(12);
       margin-right: rem(24);
       word-break: break-word;
+      cursor: pointer;
     }
   }
 
