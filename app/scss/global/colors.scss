@@ -1,23 +1,36 @@
+//Primary
 $colors-primary: (
   clr-brightblue: hsl(220, 98%, 61%),
   clr-white: hsl(0, 0%, 100%),
   clr-chekbg: linear-gradient(90deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%)),
 );
 
-$colors-light: (
-  clr-light-gray: hsl(0, 0%, 98%),
-  clr-light-grayishblue-la: hsl(236, 33%, 92%),
-  clr-light-grayishblue-lb: hsl(233, 11%, 84%),
-  clr-dark-grayishblue-la: hsl(236, 9%, 61%),
-  clr-dark-grayishblue-lb: hsl(235, 19%, 35%),
+//Light
+$clr-light-gray: hsl(0, 0%, 98%);
+$clr-light-grayishblue-la: hsl(236, 33%, 92%);
+$clr-light-grayishblue-lb: hsl(233, 11%, 84%);
+$clr-dark-grayishblue-la: hsl(236, 9%, 61%);
+$clr-dark-grayishblue-lb: hsl(235, 19%, 35%);
+
+//Dark
+$clr-dark-blue: hsl(235, 21%, 11%);
+$clr-dark-des-blue: hsl(235, 24%, 19%);
+$clr-light-grayishblue-da: hsl(234, 39%, 85%);
+$clr-light-grayishblue-db: hsl(236, 33%, 92%);
+$clr-dark-grayishblue-da: hsl(234, 11%, 52%);
+
+$theme-colors-light: (
+  main-color: $clr-light-gray,
+  foreground-color: $clr-light-grayishblue-la,
+  border-color: rgba($clr-light-grayishblue-lb, 0.8),
+  color-primary: $clr-dark-grayishblue-la,
+  color-secondary: $clr-dark-grayishblue-lb,
 );
 
-$colors-dark: (
-  clr-dark-blue: hsl(235, 21%, 11%),
-  clr-dark-des-blue: hsl(235, 24%, 19%),
-  clr-light-grayishblue-da: hsl(234, 39%, 85%),
-  clr-light-grayishblue-db: hsl(236, 33%, 92%),
-  clr-dark-grayishblue-da: hsl(234, 11%, 52%),
-  clr-dark-grayishblue-db: hsl(233, 14%, 35%),
-  clr-dark-grayishblue-dc: hsl(237, 14%, 26%),
+$theme-colors-dark: (
+  main-color: $clr-dark-des-blue,
+  foreground-color: $clr-dark-blue,
+  border-color: rgba($clr-light-grayishblue-da, 0.2),
+  color-primary: $clr-dark-grayishblue-da,
+  color-secondary: $clr-light-grayishblue-db,
 );

@@ -1,6 +1,7 @@
 @use "../util" as *;
 
 .btn {
+  display: inline-block;
   width: 24px;
   height: 24px;
   outline: none;
@@ -8,13 +9,24 @@
   appearance: none;
   cursor: pointer;
   border-radius: 50%;
-  padding: rem(1);
-  background: var(--clr-dark-grayishblue-la);
+  padding: rem(12);
+  background: var(--border-color);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: destination-out;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: var(--main-color);
+  }
 
   &:hover {
-    padding: rem(2);
     background: var(--clr-chekbg);
   }
 }

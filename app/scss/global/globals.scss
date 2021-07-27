@@ -22,7 +22,7 @@ body {
   min-height: 100vh;
   font-size: var(--fz-sm);
   text-rendering: optimizeSpeed;
-  background: linear-gradient(to bottom, transparent, var(--clr-light-gray));
+  background-color: var(--foreground-color);
 
   @include mq(small) {
     font-size: var(--fz-md);

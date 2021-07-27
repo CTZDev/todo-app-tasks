@@ -1,14 +1,13 @@
 @use "../util" as *;
 
-//Song data
-
 .todo-task {
-  border-bottom: 1px solid var(--clr-light-grayishblue-lb);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
+  gap: rem(12);
   align-items: center;
-  padding: rem(14) rem(16);
-  color: var(--clr-dark-grayishblue-lb);
+  padding: rem(14) rem(20);
+  color: var(--color-secondary);
   cursor: move;
 
   &.is-active {
@@ -19,12 +18,16 @@
 
     p {
       text-decoration: line-through;
-      color: var(--clr-dark-grayishblue-la);
+      color: var(--color-primary);
     }
 
     .btn {
-      padding: 12px;
+      padding: rem(12);
       background: url(../images/icon-check.svg) no-repeat center, var(--clr-chekbg);
+
+      &::before {
+        position: initial;
+      }
     }
   }
 
@@ -36,10 +39,9 @@
     display: inherit;
     align-items: center;
     flex-basis: 95%;
+    gap: 1rem;
 
     > p {
-      margin-left: rem(12);
-      margin-right: rem(24);
       word-break: break-word;
       cursor: pointer;
     }

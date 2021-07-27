@@ -1,13 +1,13 @@
 @use "../util" as *;
 
 .main-header {
-  background: url(../images/bg-mobile-light.jpg) no-repeat center;
+  background: var(--bg-mobile-header);
   background-size: cover;
   padding-top: rem(40);
   padding-bottom: rem(130);
 
   @include mq(small) {
-    background: url(../images/bg-desktop-light.jpg) no-repeat center;
+    background: var(--bg-desktop-header);
     background-size: cover;
     padding-top: rem(72);
     padding-bottom: rem(192);
@@ -21,7 +21,7 @@
       text-decoration: none;
       line-height: 1.15rem;
       overflow: hidden;
-      color: var(--clr-light-gray);
+      color: var(--clr-white);
 
       > span {
         vertical-align: sub;
@@ -31,9 +31,14 @@
       }
     }
 
-    .dark-theme {
+    .dark-theme-img {
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(black, 0);
+
       > img {
         vertical-align: middle;
+        pointer-events: none;
       }
     }
   }

@@ -1,17 +1,42 @@
 @use "./colors" as *;
 
 :root {
-  @each $prop, $value in $colors-primary {
-    --#{$prop}: #{$value};
+  @each $color, $value in $colors-primary {
+    --#{$color}: #{$value};
   }
-  @each $prop, $value in $colors-light {
-    --#{$prop}: #{$value};
+
+  @each $color, $value in $theme-colors-light {
+    --#{$color}: #{$value};
   }
-  @each $prop, $value in $colors-dark {
-    --#{$prop}: #{$value};
-  }
+
+  --bg-mobile-header: url(../images/bg-mobile-light.jpg) no-repeat center;
+  --bg-desktop-header: url(../images/bg-desktop-light.jpg) no-repeat center;
   --font-family: "Josefin Sans", sans-serif;
   --fz-sm: 14px;
   --fz-md: 16px;
   --fz-lg: 18px;
+
+  .light-theme {
+    @each $color, $value in $theme-colors-light {
+      --#{$color}: #{$value};
+    }
+    --bg-mobile-header: url(../images/bg-mobile-light.jpg) no-repeat center;
+    --bg-desktop-header: url(../images/bg-desktop-light.jpg) no-repeat center;
+    transition: all 150ms ease-in;
+  }
+
+  .dark-theme {
+    @each $color, $value in $theme-colors-dark {
+      --#{$color}: #{$value};
+    }
+    --bg-mobile-header: url(../images/bg-mobile-dark.jpg) no-repeat center;
+    --bg-desktop-header: url(../images/bg-desktop-dark.jpg) no-repeat center;
+    transition: all 150ms ease-in;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @each $color, $value in $theme-colors-dark {
+      --#{$color}: #{$value};
+    }
+  }
 }

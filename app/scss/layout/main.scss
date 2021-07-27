@@ -15,7 +15,7 @@ main {
   &-newTask {
     border-radius: 6px;
     margin-bottom: rem(16);
-    background-color: var(--clr-white);
+    background-color: var(--main-color);
 
     @include mq(small) {
       margin-bottom: rem(24);
@@ -36,7 +36,7 @@ main {
         margin-left: rem(2);
         border: none;
         outline: none;
-        color: var(--clr-dark-grayishblue-lb);
+        color: var(--color-secondary);
         caret-color: var(--clr-brightblue);
         background-color: transparent;
 
@@ -48,15 +48,15 @@ main {
   }
 
   &-tasks {
-    background-color: var(--clr-white);
+    background-color: var(--main-color);
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: rem(16);
-    color: var(--clr-dark-grayishblue-la);
-    box-shadow: 0px 2px 18px -6px var(--clr-dark-grayishblue-la);
+    color: var(--color-primary);
+    box-shadow: 0px 10px 20px -6px var(--foreground-color);
 
     &-tags {
-      padding: rem(16) rem(16);
+      padding: rem(16) rem(20);
     }
 
     &-tag {
@@ -68,8 +68,8 @@ main {
     border-radius: 6px;
     padding: rem(16);
     gap: rem(16);
-    background-color: var(--clr-white);
-    box-shadow: 0px 2px 18px -6px var(--clr-dark-grayishblue-la);
+    background-color: var(--main-color);
+    box-shadow: 0px 2px 15px 2px var(--foreground-color);
 
     @include mq(small) {
       position: absolute;
@@ -82,6 +82,7 @@ main {
 
     &-btn {
       @include activeState;
+      font-weight: bold;
     }
   }
 }
