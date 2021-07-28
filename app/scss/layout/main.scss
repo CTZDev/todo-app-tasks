@@ -62,6 +62,12 @@ main {
     &-tag {
       @include activeState;
     }
+
+    &-empty {
+      text-align: center;
+      padding: 1.8rem;
+      border-radius: rem(4);
+    }
   }
 
   &-details {

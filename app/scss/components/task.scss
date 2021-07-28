@@ -54,3 +54,16 @@
     transition: opacity 250ms ease-in, visibility 250ms ease-in;
   }
 }
+
+//Tasks Emptys
+[data-tasks-actions] {
+  max-height: 20vh;
+  transition: max-height 250ms ease-in, padding 250ms ease-in;
+
+  &.is-active {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    padding: 0;
+  }
+}

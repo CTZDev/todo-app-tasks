@@ -27,13 +27,13 @@
           <form action="#" id="formTodo">
             <div class="todo-newTask-add flex flex-ai-c">
               <button type="submit" name="btnnewTask" class="btn"></button>
-              <input type="text" name="txtnewTask" placeholder="Create a new todo..." />
+              <input type="text" name="txtnewTask" placeholder="Create a new todo..." autofocus />
             </div>
           </form>
         </section>
         <section class="todo-tasks">
           <div class="todo-tasks-container">
-            <div class="todo-task is-active">
+            <!-- <div class="todo-task is-active">
               <div class="todo-task-description">
                 <input type="checkbox" class="btn is-active" />
                 <p>Task #1</p>
@@ -41,33 +41,14 @@
               <figure class="todo-task-delete">
                 <img width="16" height="16" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
               </figure>
-            </div>
-            <div class="todo-task">
-              <div class="todo-task-description">
-                <input type="checkbox" class="btn" />
-                <p>Task #2</p>
-              </div>
-              <figure class="todo-task-delete">
-                <img width="16" height="16" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
-              </figure>
-            </div>
-            <div class="todo-task">
-              <!-- Generar id con JS -->
-              <div class="todo-task-description">
-                <input type="checkbox" class="btn" />
-                <p>Task #3</p>
-              </div>
-              <figure class="todo-task-delete">
-                <img width="16" height="16" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
-              </figure>
-            </div>
+            </div> -->
           </div>
-          <div class="todo-tasks-tags flex flex-jc-sb flex-ai-c">
+          <div class="todo-tasks-tags flex flex-jc-sb flex-ai-c" data-tasks-actions>
             <p>5 items left</p>
             <button type="button" class="todo-tasks-tag">Clear Completed</button>
           </div>
         </section>
-        <section class="todo-details flex flex-jc-c flex-ai-c">
+        <section class="todo-details flex flex-jc-c flex-ai-c" data-tasks-actions>
           <button type="button" class="todo-details-btn active">All</button>
           <button type="button" class="todo-details-btn">Active</button>
           <button type="button" class="todo-details-btn">Completed</button>
@@ -80,13 +61,12 @@
 
     <template id="template-task">
       <div class="todo-task">
-        <!-- Generar id con JS -->
         <div class="todo-task-description">
-          <input type="checkbox" />
-          <p>Task #1</p>
+          <input type="checkbox" class="btn" />
+          <p>Task #2</p>
         </div>
         <figure class="todo-task-delete">
-          <img src="./images/icon-cross.svg" alt="Delete Task" />
+          <img width="16" height="16" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
         </figure>
       </div>
     </template>
