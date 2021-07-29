@@ -111,12 +111,12 @@ const taskActions = (e) => {
     }
 
     if ($btnActiveTasks.classList.contains("active")) {
-      tasksLength(true, $countTasks);
+      tasksLength(false, $countTasks);
       showAndHiddenTasks(true);
     }
 
     if ($btnCompletedTasks.classList.contains("active")) {
-      tasksLength(false, $countTasks);
+      tasksLength(true, $countTasks);
       showAndHiddenTasks(false);
     }
   }
