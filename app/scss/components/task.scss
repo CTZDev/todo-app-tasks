@@ -9,6 +9,7 @@
   padding: rem(14) rem(20);
   color: var(--color-secondary);
   cursor: move;
+  transition: all 250ms ease-in;
 
   &.is-active {
     & .todo-task-delete {
@@ -40,18 +41,28 @@
     align-items: center;
     flex-basis: 95%;
     gap: 1rem;
+    cursor: pointer;
+    user-select: none;
 
     > p {
       word-break: break-word;
       cursor: pointer;
+      transition: text-decoration 250ms ease-in, color 250ms ease-in;
     }
   }
 
   &-delete {
+    border: none;
+    outline: none;
+    background-color: transparent;
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
     transition: opacity 250ms ease-in, visibility 250ms ease-in;
+
+    & > img {
+      pointer-events: none;
+    }
   }
 }
 

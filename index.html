@@ -32,26 +32,16 @@
           </form>
         </section>
         <section class="todo-tasks">
-          <div class="todo-tasks-container">
-            <!-- <div class="todo-task is-active">
-              <div class="todo-task-description">
-                <input type="checkbox" class="btn is-active" />
-                <p>Task #1</p>
-              </div>
-              <figure class="todo-task-delete">
-                <img width="16" height="16" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
-              </figure>
-            </div> -->
-          </div>
+          <div class="todo-tasks-container"></div>
           <div class="todo-tasks-tags flex flex-jc-sb flex-ai-c" data-tasks-actions>
-            <p>5 items left</p>
-            <button type="button" class="todo-tasks-tag">Clear Completed</button>
+            <p><span>0</span> items left</p>
+            <button type="button" class="todo-tasks-tag" id="btnClearCompleted">Clear Completed</button>
           </div>
         </section>
         <section class="todo-details flex flex-jc-c flex-ai-c" data-tasks-actions>
-          <button type="button" class="todo-details-btn active">All</button>
-          <button type="button" class="todo-details-btn">Active</button>
-          <button type="button" class="todo-details-btn">Completed</button>
+          <button type="button" id="btnAllTasks" class="todo-details-btn active">All</button>
+          <button type="button" id="btnActiveTasks" class="todo-details-btn">Active</button>
+          <button type="button" id="btnCompletedTasks" class="todo-details-btn">Completed</button>
         </section>
       </div>
     </main>
@@ -62,12 +52,12 @@
     <template id="template-task">
       <div class="todo-task">
         <div class="todo-task-description">
-          <input type="checkbox" class="btn" />
+          <button type="button" class="btn"></button>
           <p>Task #2</p>
         </div>
-        <figure class="todo-task-delete">
+        <button class="todo-task-delete">
           <img width="16" height="16" src="./images/icon-cross.svg" alt="Delete Task" loading="lazy" />
-        </figure>
+        </button>
       </div>
     </template>
   </body>
