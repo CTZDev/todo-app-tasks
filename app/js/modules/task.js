@@ -64,7 +64,7 @@ const drawTask = () => {
 const setTask = (form, txtnewTask) => {
   //Validity whitespace in the input new Task
   if (txtnewTask === "") {
-    console.log("Campo vacio");
+    alert("Campo vacio , Favor Ingresa una tarea 😉😉");
     return;
   }
   //Create Task
@@ -139,10 +139,7 @@ const todoTaskOperations = (e) => {
   const $btnClearCompleted = d.getElementById("btnClearCompleted");
 
   if (e.target.matches(".todo-details-btn")) {
-    $detailsTasks.forEach((detail) => {
-      detail.classList.remove("active");
-    });
-    e.target.classList.add("active");
+    detailsTasksActions($detailsTasks, e.target);
   }
 
   if (e.target === $btnAllTasks) {
@@ -162,8 +159,23 @@ const todoTaskOperations = (e) => {
   }
 
   if (e.target === $btnClearCompleted) {
-    console.log("sdfsdfsd");
+    const lengthTaskActive = Object.values(listTasks).filter(({ state }) => state).length;
+    if (lengthTaskActive > 0) {
+      alert("Se limpio correctamente las tareas completadas 😎😎");
+    } else {
+      alert("No hay tareas cumplidas 😒😒");
+    }
+    showAndHiddenTasks(true, false);
+    drawTask();
+    detailsTasksActions($detailsTasks, $btnAllTasks);
   }
+};
+
+const detailsTasksActions = (details, target) => {
+  details.forEach((detail) => {
+    detail.classList.remove("active");
+  });
+  target.classList.add("active");
 };
 
 const todoAllTasks = () => {
@@ -176,18 +188,17 @@ const tasksLength = (active = true, countTask) => {
   countTask.textContent = completedTask;
 };
 
-//Show and Hidden Task (Active - Complete)
-const showAndHiddenTasks = (active = true) => {
+//Show and Hidden Task (Active - Complete) , active = state of the taks
+// optionTask = true default , false = deleteTasks Completed
+const showAndHiddenTasks = (active = true, optionTask = true) => {
   Object.values(listTasks).filter(({ id, state }) => {
     if (state === active) {
       d.querySelectorAll(".todo-task").forEach((task) => {
         const $idTask = task.dataset.id;
         if (id == $idTask) {
-          task.style.display = "none";
+          optionTask ? (task.style.display = "none") : delete listTasks[$idTask];
         }
       });
     }
   });
 };
-
-const deleteTasksCompleted = () => {};
