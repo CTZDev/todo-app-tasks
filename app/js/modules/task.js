@@ -24,19 +24,8 @@ export default function todoTask() {
   });
 
   $containerTasks.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", e.target.dataset.id);
-
-    //Disbaled task-descricption
-    d.querySelectorAll(".todo-task-description").forEach((desc) => {
-      desc.style.pointerEvents = "none";
-    });
-
-    d.querySelectorAll(".todo-task").forEach((task, i) => {
-      if (e.target.dataset.id === task.dataset.id) {
-        indexDragTask = i;
-        return;
-      }
-    });
+    drag(e);
+    indexDragTask = assignIdDragAndDrop(e);
   });
 
   $containerTasks.addEventListener("dragover", (e) => {
@@ -44,29 +33,17 @@ export default function todoTask() {
   });
 
   $containerTasks.addEventListener("drop", (e) => {
-    e.preventDefault();
-    const data = e.dataTransfer.getData("text");
-    const $target = d.querySelector(`.todo-task[data-id="${data}"]`);
+    indexDropTask = assignIdDragAndDrop(e);
+    const $target = drop(e);
 
-    d.querySelectorAll(".todo-task").forEach((task, i) => {
-      if (e.target.dataset.id === task.dataset.id) {
-        indexDropTask = i;
-        return;
-      }
-    });
-
-    $containerTasks.children[indexDragTask].insertAdjacentElement("afterend", e.target);
-    $containerTasks.children[indexDropTask].insertAdjacentElement("afterend", $target);
-
-    // console.log($containerTasks.children[indexDragTask]);
-    // $containerTasks.insertBefore($target, $containerTasks.children[indexDragTask]);
-
-    //Enabled task-descricption
-    d.querySelectorAll(".todo-task-description").forEach((desc) => {
-      desc.style.pointerEvents = "auto";
-    });
-
-    // console.log($target, e.target);
+    //SELECTED FROM UP TO DOWN - ALSO APPLIED REVERSE
+    if (indexDragTask <= indexDropTask) {
+      $containerTasks.children[indexDragTask].insertAdjacentElement("afterend", e.target);
+      $containerTasks.children[indexDropTask].insertAdjacentElement("afterend", $target);
+    } else {
+      $containerTasks.children[indexDragTask].insertAdjacentElement("beforebegin", e.target);
+      $containerTasks.children[indexDropTask].insertAdjacentElement("beforebegin", $target);
+    }
   });
 }
 
@@ -256,16 +233,37 @@ const showAndHiddenTasks = (active = true, optionTask = true) => {
   });
 };
 
+//Assign Id , drag and drop , used for the insertElement
+const assignIdDragAndDrop = (e) => {
+  let index = null;
+  d.querySelectorAll(".todo-task").forEach((task, i) => {
+    if (e.target.dataset.id === task.dataset.id) {
+      index = i;
+      return;
+    }
+  });
+  return index;
+};
+
 //Drag and Drop
 const drag = (e) => {
-  console.log(e.target);
   e.dataTransfer.setData("text/plain", e.target.dataset.id);
-  console.log(e.target.dataTransfer.getData("text"));
+  //Disbaled task-descricption
+  d.querySelectorAll(".todo-task-description").forEach((desc) => {
+    desc.style.pointerEvents = "none";
+  });
   e.dataTransfer.effectAllowed = "move";
 };
 
 const drop = (e) => {
+  e.preventDefault();
   const data = e.dataTransfer.getData("text");
-  console.log(data);
-  e.target.appendChild(data);
+  const $target = d.querySelector(`.todo-task[data-id="${data}"]`);
+
+  //Enabled task-descricption
+  d.querySelectorAll(".todo-task-description").forEach((desc) => {
+    desc.style.pointerEvents = "auto";
+  });
+
+  return $target;
 };
