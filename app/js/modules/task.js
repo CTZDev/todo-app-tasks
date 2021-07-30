@@ -5,6 +5,8 @@ const listTasks = {};
 
 export default function todoTask() {
   const $form = d.getElementById("formTodo");
+  const $containerTasks = d.getElementById("todoContainer");
+  let indexDragTask, indexDropTask;
 
   $form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -20,6 +22,52 @@ export default function todoTask() {
     taskActions(e);
     todoTaskOperations(e);
   });
+
+  $containerTasks.addEventListener("dragstart", (e) => {
+    e.dataTransfer.setData("text/plain", e.target.dataset.id);
+
+    //Disbaled task-descricption
+    d.querySelectorAll(".todo-task-description").forEach((desc) => {
+      desc.style.pointerEvents = "none";
+    });
+
+    d.querySelectorAll(".todo-task").forEach((task, i) => {
+      if (e.target.dataset.id === task.dataset.id) {
+        indexDragTask = i;
+        return;
+      }
+    });
+  });
+
+  $containerTasks.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+
+  $containerTasks.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData("text");
+    const $target = d.querySelector(`.todo-task[data-id="${data}"]`);
+
+    d.querySelectorAll(".todo-task").forEach((task, i) => {
+      if (e.target.dataset.id === task.dataset.id) {
+        indexDropTask = i;
+        return;
+      }
+    });
+
+    $containerTasks.children[indexDragTask].insertAdjacentElement("afterend", e.target);
+    $containerTasks.children[indexDropTask].insertAdjacentElement("afterend", $target);
+
+    // console.log($containerTasks.children[indexDragTask]);
+    // $containerTasks.insertBefore($target, $containerTasks.children[indexDragTask]);
+
+    //Enabled task-descricption
+    d.querySelectorAll(".todo-task-description").forEach((desc) => {
+      desc.style.pointerEvents = "auto";
+    });
+
+    // console.log($target, e.target);
+  });
 }
 
 //Dibujar mis tareas
@@ -29,10 +77,7 @@ const drawTask = () => {
   const $countTasks = d.querySelector(".todo-tasks-tags > p > span");
   const $templateTask = d.getElementById("template-task").content;
   const $fragment = d.createDocumentFragment();
-
   const $btnAllTasks = d.getElementById("btnAllTasks");
-  const $btnActiveTasks = d.getElementById("btnActiveTasks");
-  const $btnCompletedTasks = d.getElementById("btnCompletedTasks");
 
   //Without Task
   if (Object.entries(listTasks).length === 0) {
@@ -50,6 +95,7 @@ const drawTask = () => {
     $clone.querySelector(".todo-task").dataset.state = state;
     $clone.querySelector(".todo-task").classList.add(`${classActive}`);
     $clone.querySelector(`.todo-task`).dataset.id = id;
+    $clone.querySelector(`.todo-task`).setAttribute("draggable", true);
     $fragment.appendChild($clone);
   });
 
@@ -63,6 +109,9 @@ const drawTask = () => {
 //Assign task to object listTasks
 const setTask = (form, txtnewTask) => {
   //Validity whitespace in the input new Task
+  const $btnAllTasks = d.getElementById("btnAllTasks");
+  const $detailsTasks = d.querySelectorAll(".todo-details-btn");
+
   if (txtnewTask === "") {
     alert("Campo vacio , Favor Ingresa una tarea 😉😉");
     return;
@@ -78,6 +127,11 @@ const setTask = (form, txtnewTask) => {
   //Object of the Task (Global)
   listTasks[task.id] = { ...task };
 
+  if (!$btnAllTasks.classList.contains("active")) {
+    alert("Tareas activas y completadas!! 😎😎😎");
+    detailsTasksActions($detailsTasks, $btnAllTasks);
+  }
+
   //Draw task
   drawTask();
 
@@ -88,7 +142,6 @@ const setTask = (form, txtnewTask) => {
 //Tasks
 const taskActions = (e) => {
   const $countTasks = d.querySelector(".todo-tasks-tags > p > span");
-
   const $btnActiveTasks = d.getElementById("btnActiveTasks");
   const $btnCompletedTasks = d.getElementById("btnCompletedTasks");
 
@@ -201,4 +254,18 @@ const showAndHiddenTasks = (active = true, optionTask = true) => {
       });
     }
   });
+};
+
+//Drag and Drop
+const drag = (e) => {
+  console.log(e.target);
+  e.dataTransfer.setData("text/plain", e.target.dataset.id);
+  console.log(e.target.dataTransfer.getData("text"));
+  e.dataTransfer.effectAllowed = "move";
+};
+
+const drop = (e) => {
+  const data = e.dataTransfer.getData("text");
+  console.log(data);
+  e.target.appendChild(data);
 };
