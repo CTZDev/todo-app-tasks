@@ -38,7 +38,7 @@ const setTask = (form, txtnewTask) => {
   const $detailsTasks = d.querySelectorAll(".todo-details-btn");
 
   if (txtnewTask === "") {
-    alert("Campo vacio , Favor Ingresa una tarea 😉😉");
+    alert("Empty field, Please enter a task😉😉");
     return;
   }
   //Create Task
@@ -53,7 +53,7 @@ const setTask = (form, txtnewTask) => {
   listTasks[task.id] = { ...task };
 
   if (!$btnAllTasks.classList.contains("active")) {
-    alert("Tareas activas y completadas!! 😎😎😎");
+    alert("Active and completed tasks!!! 😎😎😎");
     detailsTasksActions($detailsTasks, $btnAllTasks);
   }
 
@@ -78,7 +78,8 @@ export const drawTask = () => {
   //Without Task
   if (Object.entries(listTasks).length === 0) {
     $dataTaskActions.forEach((task) => task.classList.add("is-active"));
-    $tasksContainer.innerHTML = `<div class="todo-tasks-empty">No hay tareas pendientes 😊😎</div>`;
+    $tasksContainer.innerHTML = `<div class="todo-tasks-empty">
+    There are no pending tasks 😊😎</div>`;
     return;
   }
 
@@ -177,9 +178,9 @@ const todoTaskOperations = (e) => {
   if (e.target === $btnClearCompleted) {
     const lengthTaskActive = Object.values(listTasks).filter(({ state }) => state).length;
     if (lengthTaskActive > 0) {
-      alert("Se limpio correctamente las tareas completadas 😎😎");
+      alert("Completed tasks were cleaned correctly 😎😎");
     } else {
-      alert("No hay tareas cumplidas 😒😒");
+      alert("No tasks completed 😒😒");
     }
     showAndHiddenTasks(true, false);
     drawTask();
