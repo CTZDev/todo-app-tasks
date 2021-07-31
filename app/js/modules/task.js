@@ -1,7 +1,7 @@
 const d = document;
 
-//List Of Tasks (Global)
-const listTasks = {};
+//List Of Tasks (Global) - Applied let for used localStorage
+export let listTasks = {};
 
 export default function todoTask() {
   const $form = d.getElementById("formTodo");
@@ -15,6 +15,9 @@ export default function todoTask() {
   });
 
   d.addEventListener("DOMContentLoaded", (e) => {
+    if (localStorage.getItem("todo-list")) {
+      listTasks = JSON.parse(localStorage.getItem("todo-list"));
+    }
     drawTask();
   });
 
@@ -27,6 +30,8 @@ export default function todoTask() {
     drag(e);
     indexDragTask = assignIdDragAndDrop(e);
   });
+
+  $containerTasks.addEventListener("touchstart", (e) => {});
 
   $containerTasks.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -44,44 +49,55 @@ export default function todoTask() {
       $containerTasks.children[indexDragTask].insertAdjacentElement("beforebegin", e.target);
       $containerTasks.children[indexDropTask].insertAdjacentElement("beforebegin", $target);
     }
+
+    //e.target = donde termina el arrastre , $target = de donde inicio
+    let idDrag = $target.dataset.id;
+    let idDrop = e.target.dataset.id;
+    let indexDrag, indexDrop;
+
+    //Convert Object to Array , used for orders Elements Of the DOM
+    let listTasksCopy = Object.entries(listTasks);
+    //Obtain index of the element DRAG and return the object element
+    //Filter and capture results and compress array bidim.
+    let taskDrag = Object.entries(listTasks)
+      .filter((taskId, i) => {
+        if (taskId[0] == idDrag) {
+          indexDrag = i;
+          return taskId[0];
+        }
+      })
+      .flat(1);
+
+    let taskDrop = Object.entries(listTasks)
+      .filter((taskId, i) => {
+        if (taskId[0] == idDrop) {
+          indexDrop = i;
+          return taskId[0];
+        }
+      })
+      .flat(1);
+
+    //Delete element of the indexDrop and IndexDrag
+    listTasksCopy.splice(indexDrop, 1, taskDrag);
+    listTasksCopy.splice(indexDrag, 1, taskDrop);
+
+    //Function where captured first Property and used key
+    function arrTwoDimensionsToObject(arr) {
+      let obj = {};
+      arr.forEach((v) => {
+        let key = v[0];
+        let value = v[1];
+        obj[key] = value;
+      });
+      return obj;
+    }
+
+    listTasks = arrTwoDimensionsToObject(listTasksCopy);
+
+    //Storage in the localStorage with changes in the listTasks
+    localStorage.setItem("todo-list", JSON.stringify(listTasks));
   });
 }
-
-//Dibujar mis tareas
-const drawTask = () => {
-  const $tasksContainer = d.querySelector(".todo-tasks-container");
-  const $dataTaskActions = d.querySelectorAll("[data-tasks-actions]");
-  const $countTasks = d.querySelector(".todo-tasks-tags > p > span");
-  const $templateTask = d.getElementById("template-task").content;
-  const $fragment = d.createDocumentFragment();
-  const $btnAllTasks = d.getElementById("btnAllTasks");
-
-  //Without Task
-  if (Object.entries(listTasks).length === 0) {
-    $dataTaskActions.forEach((task) => task.classList.add("is-active"));
-    $tasksContainer.innerHTML = `<div class="todo-tasks-empty">No hay tareas pendientes 😊😎</div>`;
-    return;
-  }
-
-  //With Task
-  $tasksContainer.innerHTML = "";
-  $dataTaskActions.forEach((task) => task.classList.remove("is-active"));
-  Object.values(listTasks).forEach(({ id, task, state, classActive }) => {
-    const $clone = $templateTask.cloneNode(true);
-    $clone.querySelector(".todo-task-description > p").textContent = task;
-    $clone.querySelector(".todo-task").dataset.state = state;
-    $clone.querySelector(".todo-task").classList.add(`${classActive}`);
-    $clone.querySelector(`.todo-task`).dataset.id = id;
-    $clone.querySelector(`.todo-task`).setAttribute("draggable", true);
-    $fragment.appendChild($clone);
-  });
-
-  if ($btnAllTasks.classList.contains("active")) {
-    $countTasks.textContent = Object.values(listTasks).length;
-  }
-
-  $tasksContainer.appendChild($fragment);
-};
 
 //Assign task to object listTasks
 const setTask = (form, txtnewTask) => {
@@ -114,6 +130,44 @@ const setTask = (form, txtnewTask) => {
 
   //Reset form
   form.reset();
+};
+
+//Draw mi tasks
+export const drawTask = () => {
+  const $tasksContainer = d.querySelector(".todo-tasks-container");
+  const $dataTaskActions = d.querySelectorAll("[data-tasks-actions]");
+  const $countTasks = d.querySelector(".todo-tasks-tags > p > span");
+  const $templateTask = d.getElementById("template-task").content;
+  const $fragment = d.createDocumentFragment();
+  const $btnAllTasks = d.getElementById("btnAllTasks");
+
+  localStorage.setItem("todo-list", JSON.stringify(listTasks));
+
+  //Without Task
+  if (Object.entries(listTasks).length === 0) {
+    $dataTaskActions.forEach((task) => task.classList.add("is-active"));
+    $tasksContainer.innerHTML = `<div class="todo-tasks-empty">No hay tareas pendientes 😊😎</div>`;
+    return;
+  }
+
+  //With Task
+  $tasksContainer.innerHTML = "";
+  $dataTaskActions.forEach((task) => task.classList.remove("is-active"));
+  Object.values(listTasks).forEach(({ id, task, state, classActive }) => {
+    const $clone = $templateTask.cloneNode(true);
+    $clone.querySelector(".todo-task-description > p").textContent = task;
+    $clone.querySelector(".todo-task").dataset.state = state;
+    $clone.querySelector(".todo-task").classList.add(`${classActive}`);
+    $clone.querySelector(`.todo-task`).dataset.id = id;
+    $clone.querySelector(`.todo-task`).setAttribute("draggable", true);
+    $fragment.appendChild($clone);
+  });
+
+  if ($btnAllTasks.classList.contains("active")) {
+    $countTasks.textContent = Object.values(listTasks).length;
+  }
+
+  $tasksContainer.appendChild($fragment);
 };
 
 //Tasks
