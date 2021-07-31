@@ -1,0 +1,17 @@
+.todo-tasks {
+  &-container {
+    max-height: 46vh;
+    overflow-y: auto;
+  }
+
+  &-container::-webkit-scrollbar {
+    width: 0.6rem; /* width of the entire scrollbar */
+  }
+  &-container::-webkit-scrollbar-track {
+    background: var(--color-primary); /* color of the tracking area */
+  }
+
+  &-container::-webkit-scrollbar-thumb {
+    background-color: var(--color-secondary); /* color of the scroll thumb */
+  }
+}

@@ -4,8 +4,8 @@ const d = document;
 export let listTasks = {};
 
 //Assign list an export , for capture object ListTasks (Used in module (drag_drop))
-export function setListTasks(list) {
-  listTasks = list;
+export function setListTasks(copyListTasks) {
+  listTasks = copyListTasks;
   localStorage.setItem("todo-list", JSON.stringify(listTasks));
 }
 
