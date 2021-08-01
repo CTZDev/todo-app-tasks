@@ -72,7 +72,6 @@ export const drawTask = () => {
   const $templateTask = d.getElementById("template-task").content;
   const $fragment = d.createDocumentFragment();
   const $btnAllTasks = d.getElementById("btnAllTasks");
-
   localStorage.setItem("todo-list", JSON.stringify(listTasks));
 
   //Without Task
@@ -144,6 +143,8 @@ const taskActions = (e) => {
     delete listTasks[$task.dataset.id];
     drawTask();
   }
+  //Change in the classActive , applied transitions for that reason with two localStorage
+  localStorage.setItem("todo-list", JSON.stringify(listTasks));
 };
 
 //Operations Tasks

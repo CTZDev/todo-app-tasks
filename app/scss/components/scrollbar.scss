@@ -2,6 +2,7 @@
   &-container {
     max-height: 46vh;
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
   &-container::-webkit-scrollbar {

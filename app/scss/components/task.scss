@@ -8,8 +8,8 @@
   align-items: center;
   padding: rem(14) rem(20);
   color: var(--color-secondary);
-  cursor: move;
   transition: all 250ms ease-in;
+  cursor: move;
 
   &.is-active {
     & .todo-task-delete {

@@ -8,10 +8,15 @@ export default function dragAndDrop() {
   $containerTasks.addEventListener("dragstart", (e) => {
     drag(e);
     indexDragTask = assignIdDragAndDrop(e);
+    e.target.style.transform = "scale(1.03)";
   });
 
   $containerTasks.addEventListener("dragover", (e) => {
     e.preventDefault();
+  });
+
+  $containerTasks.addEventListener("dragend", (e) => {
+    e.target.style.transform = "scale(1)";
   });
 
   $containerTasks.addEventListener("drop", (e) => {
@@ -93,7 +98,7 @@ const drag = (e) => {
   d.querySelectorAll(".todo-task-description").forEach((desc) => {
     desc.style.pointerEvents = "none";
   });
-  e.dataTransfer.effectAllowed = "move";
+  // e.dataTransfer.effectAllowed = "none";
 };
 
 const drop = (e) => {
